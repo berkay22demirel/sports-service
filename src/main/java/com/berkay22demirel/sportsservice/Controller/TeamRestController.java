@@ -1,9 +1,7 @@
 package com.berkay22demirel.sportsservice.Controller;
 
 import com.berkay22demirel.sportsservice.Model.Team;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.Collection;
@@ -23,13 +21,21 @@ public class TeamRestController {
         teamsMap.put(4, new Team(4, "Trabzon"));
     }
 
+    //http://localhost:8080/team/all
     @RequestMapping(value = "/team/all")
     public Collection<Team> getAll() {
         return teamsMap.values();
     }
 
+    //http://localhost:8080/team/3
     @RequestMapping(value = "/team/{id}")
-    public Team getMatch(@PathVariable("id") Integer id) {
+    public Team getTeamById(@PathVariable("id") Integer id) {
+        return teamsMap.get(id);
+    }
+
+    //http://localhost:8080/team?id=3
+    @GetMapping(value = "/team")
+    public Team getTeamIdByName(@RequestParam(value = "id", defaultValue = "") Integer id) {
         return teamsMap.get(id);
     }
 }
