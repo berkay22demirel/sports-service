@@ -1,4 +1,4 @@
-package com.berkay22demirel.sportsservice.Model;
+package com.berkay22demirel.sportsservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
